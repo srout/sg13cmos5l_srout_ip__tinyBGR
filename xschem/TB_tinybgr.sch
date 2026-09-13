@@ -19,8 +19,7 @@ N 310 120 380 120 {lab=0}
 N 310 100 310 120 {lab=0}
 N 290 120 310 120 {lab=0}
 N 290 120 290 130 {lab=0}
-C {pmbgr1.sym} 10 0 0 0 {name=xbgrtop}
-C {vsource.sym} -300 0 0 0 {name=Vsup value=PAR_VDD5 savecurrent=false}
+C {vsource.sym} -300 0 0 0 {name=Vsup value="PAR_VDD5" savecurrent=false}
 C {gnd.sym} -300 70 0 0 {name=l1 lab=0}
 C {capa.sym} 380 70 0 0 {name=C3
 m=1
@@ -33,6 +32,7 @@ C {lab_wire.sym} 260 -20 0 0 {name=p2 sig_type=std_logic lab=VREF}
 C {lab_wire.sym} 260 0 0 0 {name=p3 sig_type=std_logic lab=IOUT1}
 C {devices/code_shown.sym} -330 200 0 0 {name=spcom only_toplevel=false value=".option savecurrents
 .PARAM PAR_VDD5=3.3
+.PARAM PAR_VDDRISE=100e-6
 .PARAM PAR_POFF=0
 .PARAM PAR_NOFF=0
 
@@ -51,11 +51,12 @@ print gmidmn1 gmidmp1
 print @q.xbgrtop.xq2.qpnpmpa[ie] @q.xbgrtop.xq1.qpnpmpa[ie]
 * dc Vref 3.3 1.5 -0.1
 DC TEMP -40 125 1
+write dc.raw
 PLOT V(VREF) 
-PLOT I(VIOUT1)
+**PLOT I(VIOUT1)
 ** PLOT @n.xbgrtop.xmnsu1.nsg13_hv_nmos[ids] 
-PLOT @n.xbgrtop.xmnsu2.nsg13_hv_nmos[ids] 
-PLOT V(xbgrtop.vgsu1)
+**PLOT @n.xbgrtop.xmnsu2.nsg13_hv_nmos[ids] 
+**PLOT V(xbgrtop.vgsu1)
 ** Calculating tempco
 MEAS DC vrefMAX_m40to125 MAX V(VREF) FROM=-40 TO=125
 MEAS DC vrefMIN_m40to125 MIN V(VREF) FROM=-40 TO=125
@@ -84,4 +85,5 @@ value="
 .lib cornerPNP.lib typ
 "
       }
-C {vsource.sym} 310 70 0 0 {name=Viout2 value=1 savecurrent=false}
+C {vsource.sym} 310 70 0 0 {name=Viout1 value=1 savecurrent=false}
+C {sg13cmos5l_srout_tinybgr.sym} 10 0 0 0 {name=xbgrtop}
