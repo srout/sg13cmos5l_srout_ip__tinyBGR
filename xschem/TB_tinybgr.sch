@@ -35,6 +35,7 @@ C {devices/code_shown.sym} -330 200 0 0 {name=spcom only_toplevel=false value=".
 .PARAM PAR_VDDRISE=100e-6
 .PARAM PAR_POFF=0
 .PARAM PAR_NOFF=0
+.OPTION TEMP=27
 
 .control
 run
@@ -77,12 +78,13 @@ C {simulator_commands_shown.sym} -290 -260 0 0 {
 name=Libs_Ngspice
 simulator=ngspice
 only_toplevel=false
-value="
-.lib cornerMOSlv.lib mos_tt
-.lib cornerMOShv.lib mos_tt
-.lib cornerRES.lib res_typ
-.lib cornerDIO.lib dio_tt
-.lib cornerPNP.lib typ
+value="tcleval(
+.lib $::MODELS_NGSPICE/cornerMOSlv.lib mos_tt
+.lib $::MODELS_NGSPICE/cornerMOShv.lib mos_tt
+.lib $::MODELS_NGSPICE/cornerRES.lib res_typ
+.lib $::MODELS_NGSPICE/cornerDIO.lib dio_tt
+.lib $::MODELS_NGSPICE/cornerPNP.lib typ
+)
 "
       }
 C {vsource.sym} 310 70 0 0 {name=Viout1 value=1 savecurrent=false}
