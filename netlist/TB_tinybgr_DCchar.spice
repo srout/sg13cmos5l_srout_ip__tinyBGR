@@ -1,0 +1,142 @@
+** sch_path: /foss/designs/work/chipalooza/xschem/TB_tinybgr.sch
+**.subckt TB_tinybgr
+Vsup ADD5V 0 PAR_VDD5
+C3 VREF 0 10f
+Viout1 IOUT1 0 1
+xbgrtop ADD5V VREF IOUT1 0 sg13cmos5l_srout_tinybgr
+**** begin user architecture code
+
+.option savecurrents
+.PARAM PAR_VDD5=3.3
+.PARAM PAR_VDDRISE=100e-6
+.PARAM PAR_POFF=4.5e-3
+.PARAM PAR_NOFF=4.5e-3
+.OPTION TEMP=27
+
+.control
+run
+save all
+
+op
+write tb_bgr_op.raw
+** To find model parameters type display in ngspice prompt
+*print @n.xbgrtop.xmn1.nsg13_hv_nmos[ids] @n.xbgrtop.xmn1.nsg13_hv_nmos[gm]
+*print @n.xbgrtop.xmp1.nsg13_hv_pmos[ids] @n.xbgrtop.xmp1.nsg13_hv_pmos[gm]
+LET gmidmn1=@n.xbgrtop.xmn1.nsg13_hv_nmos[gm]/@n.xbgrtop.xmn1.nsg13_hv_nmos[ids]
+LET gmidmp1=@n.xbgrtop.xmp1.nsg13_hv_pmos[gm]/@n.xbgrtop.xmp1.nsg13_hv_pmos[ids]
+print gmidmn1 gmidmp1
+*print @q.xbgrtop.xq2.qpnpmpa[ie] @q.xbgrtop.xq1.qpnpmpa[ie]
+* dc Vref 3.3 1.5 -0.1
+DC TEMP -40 125 1
+write dc.raw
+PLOT V(VREF)
+**PLOT I(VIOUT1)
+** PLOT @n.xbgrtop.xmnsu1.nsg13_hv_nmos[ids]
+**PLOT @n.xbgrtop.xmnsu2.nsg13_hv_nmos[ids]
+**PLOT V(xbgrtop.vgsu1)
+** Calculating tempco
+MEAS DC vrefMAX_m40to125 MAX V(VREF) FROM=-40 TO=125
+MEAS DC vrefMIN_m40to125 MIN V(VREF) FROM=-40 TO=125
+*MEAS DC vrefMAX_m30to85 MAX V(VREF) FROM=-30 TO=85
+*MEAS DC vrefMIN_m30to85 MIN V(VREF) FROM=-30 TO=85
+MEAS DC IOUTm40 FIND I(VIOUT1) At=-40
+MEAS DC IOUT27 FIND I(VIOUT1) At=27
+MEAS DC IOUT125 FIND I(VIOUT1) At=125
+MEAS DC VREFm40 FIND V(VREF) AT=-40
+MEAS DC VREF27 FIND V(VREF) AT=27
+MEAS DC VREF125 FIND V(VREF) AT=125
+
+LET tempco_m40_125_ppmC=1e6*(vrefMAX_m40to125 - vrefMIN_m40to125)/165/1.25
+*LET tempco_m30_85_ppmC=1e6*(vrefMAX_m30to85 - vrefMIN_m30to85)/115/1.25
+**
+PRINT tempco_m40_125_ppmC
+*PRINT tempco_m30_85_ppmC
+
+*print IOUT27
+
+.endc
+
+
+
+
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOShv.lib mos_ff
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerRES.lib res_typ
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerDIO.lib dio_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerPNP.lib typ
+
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  sg13cmos5l_srout_tinybgr.sym # of pins=4
+** sym_path: /foss/designs/work/chipalooza/xschem/sg13cmos5l_srout_tinybgr.sym
+** sch_path: /foss/designs/work/chipalooza/xschem/sg13cmos5l_srout_tinybgr.sch
+.subckt sg13cmos5l_srout_tinybgr AVDD VREF IOUT1 AVSS
+*.iopin AVDD
+*.iopin AVSS
+*.opin VREF
+*.opin IOUT1
+XQ1 AVSS AVSS Vbe1 pnpMPA a=1.4e-12 p=5.4e-06 m=8
+XQ2 AVSS AVSS Vbe2 pnpMPA a=1.4e-12 p=5.4e-06
+XMN2 Vgn Vgn Vbe2 AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=6
+XMN1 net1 net2 Vbe2mr AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=12
+XMP2 Vgn Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3
+XMP1 net1 net1 AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=6
+XMP3 IOUT1 net1 AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=11
+XMP5 VREF Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3
+V1 net2 Vgn PAR_NOFF
+V2 net1 Vgp PAR_POFF
+XMNSU1 AVDD vgsu1 Vgn AVSS sg13_hv_nmos w=1u l=2u ng=1
+XMPSU1 net3 VREF AVDD AVDD sg13_hv_pmos w=0.35u l=6u ng=1
+XMNSU2 vgsu1 VREF AVSS AVSS sg13_hv_nmos w=1u l=1u ng=1
+XMPSU2 net4 VREF net3 AVDD sg13_hv_pmos w=0.35u l=6u ng=1
+XMPSU3 net5 VREF net4 AVDD sg13_hv_pmos w=0.35u l=6u ng=1
+XMPSU4 vgsu1 VREF net6 AVDD sg13_hv_pmos w=0.35u l=6u ng=1
+XQ3 AVSS AVSS AVSS pnpMPA a=1.4e-12 p=5.4e-06
+xbgrres VREF Vbe2mr AVSS Vbe2 Vbe1 sg13cmos5l_srout_tinybgr_res
+.ends
+
+
+* expanding   symbol:  sg13cmos5l_srout_tinybgr_res.sym # of pins=5
+** sym_path: /foss/designs/work/chipalooza/xschem/sg13cmos5l_srout_tinybgr_res.sym
+** sch_path: /foss/designs/work/chipalooza/xschem/sg13cmos5l_srout_tinybgr_res.sch
+.subckt sg13cmos5l_srout_tinybgr_res Vref Vbe2mr AVSS Vbe2 Vbe1
+*.iopin Vbe1
+*.iopin Vbe2
+*.iopin AVSS
+*.iopin Vbe2mr
+*.iopin Vref
+XR3 Vbe2mr net21 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR1 net21 Vbe1 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR2 net2 net1 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR4 net1 Vbe2 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR5 net3 net2 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR6 net4 net3 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR7 net22 net4 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR8 net6 net5 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR9 net5 net23 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR10 net7 net6 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR11 net8 net7 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR12 net22 net8 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR13 net10 net9 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR14 net9 net23 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR15 net11 net10 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR16 net12 net11 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR17 net24 net12 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR18 net14 net13 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR19 net13 net25 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR20 net15 net14 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR21 net16 net15 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR22 net24 net16 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR23 net18 net17 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR24 net17 net26 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR25 net19 net18 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR26 net20 net19 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR27 Vref net20 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR28 net25 net27 AVSS rhigh w=1.1u l=4u m=1 b=0
+XR29 net26 net27 AVSS rhigh w=1.1u l=4u m=1 b=0
+.ends
+
+.end
