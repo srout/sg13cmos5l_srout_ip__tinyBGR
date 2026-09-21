@@ -31,20 +31,23 @@ C {gnd.sym} 290 130 0 0 {name=l2 lab=0}
 C {lab_wire.sym} 260 -20 0 0 {name=p2 sig_type=std_logic lab=VREF}
 C {lab_wire.sym} 260 0 0 0 {name=p3 sig_type=std_logic lab=IOUT1}
 C {devices/code_shown.sym} -330 150 0 0 {name=spcom only_toplevel=false value=".option savecurrents
-.PARAM PAR_VDD5=3.0
-.PARAM PAR_VDDRISE=2e-3
+.PARAM PAR_VDD5=3.3
+.PARAM PAR_VDDRISE=1e-3
 .PARAM PAR_POFF=0
 .PARAM PAR_NOFF=0
-.TEMP -40
+.TEMP 125
+
+.MEASURE TRAN tstart WHEN V(VREF)=1.0 RISE=1
+.MEASURE TRAN vref FIND V(VREF) AT=19e-3
 
 .control
 run
 save all
 
 **Transient
-TRAN 1u 20000u
+TRAN 1u 20e-3
 
-PLOT V(VREF) V(xbgrtop.vgsu1) V(xbgrtop.vgn) V(xbgrtop.vgp)
+* PLOT V(VREF) V(xbgrtop.vgsu1) V(xbgrtop.vgn) V(xbgrtop.vgp)
 
 .endc"}
 C {simulator_commands_shown.sym} -290 -260 0 0 {
