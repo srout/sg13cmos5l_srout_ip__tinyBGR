@@ -122,6 +122,7 @@ N -400 -140 -400 -120 {lab=AVSS}
 N -440 -140 -400 -140 {lab=AVSS}
 N -440 -180 -440 -140 {lab=AVSS}
 N -400 -150 -400 -140 {lab=AVSS}
+N -400 -310 -400 -300 {lab=#net5}
 C {sg13cmos5l_pr/pnpMPA.sym} 320 -100 0 0 {name=Q1
 m=8
 a=1.4p
