@@ -1,0 +1,13 @@
+** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/magic/sg13cmos5l_srout_tinybgr4magic.sch
+**.subckt sg13cmos5l_srout_tinybgr4magic AVDD AVSS
+*.iopin AVDD
+*.iopin AVSS
+XQ2 AVSS AVSS Vbe2 pnpMPA a=1.4e-12 p=5.4e-06
+XMN2 net1 net1 net2 AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=1 mm_ok=1
+XMP2 net1 net1 AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1 mm_ok=1
+XMNSU1 AVDD vgsu1 net1 AVSS sg13_hv_nmos w=1u l=2u ng=1 m=1 mm_ok=1
+XMPSU1 vgsu1 AVSS AVDD AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1 mm_ok=1
+XMNSU2 vgsu1 AVSS AVSS AVSS sg13_hv_nmos w=1u l=1u ng=1 m=1 mm_ok=1
+XR27 net2 Vbe2 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+**.ends
+.end

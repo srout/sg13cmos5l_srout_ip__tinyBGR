@@ -32,31 +32,31 @@ C {lab_wire.sym} 260 -20 0 0 {name=p2 sig_type=std_logic lab=VREF}
 C {lab_wire.sym} 260 0 0 0 {name=p3 sig_type=std_logic lab=IOUT1}
 C {devices/code_shown.sym} -330 150 0 0 {name=spcom only_toplevel=false value=".option savecurrents
 .PARAM PAR_VDD5=3.3
-.PARAM PAR_VDDRISE=1e-3
+.PARAM PAR_VDDRISE=0.5e-3
 .PARAM PAR_POFF=0
 .PARAM PAR_NOFF=0
-.TEMP 125
+.TEMP 27
 
 .MEASURE TRAN tstart WHEN V(VREF)=1.0 RISE=1
-.MEASURE TRAN vref FIND V(VREF) AT=19e-3
+.MEASURE TRAN vref FIND V(VREF) AT=2e-3
 
 .control
 run
 save all
 
 **Transient
-TRAN 1u 20e-3
+TRAN 1u 2e-3
 
-* PLOT V(VREF) V(xbgrtop.vgsu1) V(xbgrtop.vgn) V(xbgrtop.vgp)
+PLOT V(VREF) V(xbgrtop.vgsu1) V(xbgrtop.vgn) V(xbgrtop.vgp)
 
 .endc"}
-C {simulator_commands_shown.sym} -290 -260 0 0 {
+C {simulator_commands_shown.sym} -330 -260 0 0 {
 name=Libs_Ngspice
 simulator=ngspice
 only_toplevel=false
 value="
 .lib cornerMOSlv.lib mos_tt
-.lib cornerMOShv.lib mos_ss
+.lib cornerMOShv.lib mos_tt
 .lib cornerRES.lib res_typ
 .lib cornerDIO.lib dio_tt
 .lib cornerPNP.lib typ

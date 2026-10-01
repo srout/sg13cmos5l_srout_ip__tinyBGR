@@ -1,0 +1,85 @@
+magic
+tech ihp-sg13cmos5l
+magscale 1 2
+timestamp 1790505385
+<< pwell >>
+rect -314 -690 314 690
+<< psubdiff >>
+rect -252 614 252 628
+rect -252 582 -160 614
+rect 160 582 252 614
+rect -252 568 252 582
+rect -252 536 -192 568
+rect -252 -536 -238 536
+rect -206 -536 -192 536
+rect 192 536 252 568
+rect -252 -568 -192 -536
+rect 192 -536 206 536
+rect 238 -536 252 536
+rect 192 -568 252 -536
+rect -252 -582 252 -568
+rect -252 -614 -160 -582
+rect 160 -614 252 -582
+rect -252 -628 252 -614
+<< psubdiffcont >>
+rect -160 582 160 614
+rect -238 -536 -206 536
+rect 206 -536 238 536
+rect -160 -614 160 -582
+<< poly >>
+rect -110 472 110 486
+rect -110 440 -96 472
+rect 96 440 110 472
+rect -110 400 110 440
+rect -110 -440 110 -400
+rect -110 -472 -96 -440
+rect 96 -472 110 -440
+rect -110 -486 110 -472
+<< polycont >>
+rect -96 440 96 472
+rect -96 -472 96 -440
+<< xpolyres >>
+rect -110 -400 110 400
+<< metal1 >>
+rect -238 582 -160 614
+rect 160 582 238 614
+rect -238 536 -206 582
+rect 206 536 238 582
+rect -106 476 106 477
+rect -106 420 -96 476
+rect 96 420 106 476
+rect -106 419 106 420
+rect -106 -420 106 -419
+rect -106 -476 -96 -420
+rect 96 -476 106 -420
+rect -106 -477 106 -476
+rect -238 -582 -206 -536
+rect 206 -582 238 -536
+rect -238 -614 -160 -582
+rect 160 -614 238 -582
+<< via1 >>
+rect -96 472 96 476
+rect -96 440 96 472
+rect -96 420 96 440
+rect -96 -440 96 -420
+rect -96 -472 96 -440
+rect -96 -476 96 -472
+<< metal2 >>
+rect -96 476 96 485
+rect -96 411 96 420
+rect -96 -420 96 -411
+rect -96 -485 96 -476
+<< labels >>
+rlabel psubdiffcont 0 -598 0 -598 0 B
+port 1 nsew
+rlabel polycont 0 456 0 456 0 R1
+port 2 nsew
+rlabel polycont 0 -456 0 -456 0 R2
+port 3 nsew
+<< properties >>
+string FIXED_BBOX -222 -598 222 598
+string gencell rhigh
+string library sg13cmos5l
+string MASKHINTS_CONTBAR -110 -486 110 486
+string parameters w 1.1 l 4.0 m 1 nx 1 wmin 0.50 lmin 0.50 class resistor rho 1360 val 4.945k dummy 0 dw 0.0 term 0.0 sterm 0.0 caplen 0 bar 1 guard 1 glc 1 grc 1 gtc 1 gbc 1 snake 0 full_metal 1 n_guard 0 hv_guard 0 vias 1 viagb 0 viagt 0 viagl 0 viagr 0 doports 1 b 0 mm_ok 1
+<< end >>

@@ -1,0 +1,120 @@
+magic
+tech ihp-sg13cmos5l
+magscale 1 2
+timestamp 1790522018
+<< pwell >>
+rect -432 -310 432 310
+<< hvnmos >>
+rect -200 -100 200 100
+<< hvndiff >>
+rect -268 86 -200 100
+rect -268 -86 -254 86
+rect -222 -86 -200 86
+rect -268 -100 -200 -86
+rect 200 86 268 100
+rect 200 -86 222 86
+rect 254 -86 268 86
+rect 200 -100 268 -86
+<< hvndiffc >>
+rect -254 -86 -222 86
+rect 222 -86 254 86
+<< hvpsubdiff >>
+rect -370 234 370 248
+rect -370 202 -278 234
+rect 278 202 370 234
+rect -370 188 370 202
+rect -370 156 -310 188
+rect -370 -156 -356 156
+rect -324 -156 -310 156
+rect 310 156 370 188
+rect -370 -188 -310 -156
+rect 310 -156 324 156
+rect 356 -156 370 156
+rect 310 -188 370 -156
+rect -370 -202 370 -188
+rect -370 -234 -278 -202
+rect 278 -234 370 -202
+rect -370 -248 370 -234
+<< hvpsubdiffcont >>
+rect -278 202 278 234
+rect -356 -156 -324 156
+rect 324 -156 356 156
+rect -278 -234 278 -202
+<< poly >>
+rect -200 160 200 174
+rect -200 128 -178 160
+rect 178 128 200 160
+rect -200 100 200 128
+rect -200 -128 200 -100
+rect -200 -160 -178 -128
+rect 178 -160 200 -128
+rect -200 -174 200 -160
+<< polycont >>
+rect -178 128 178 160
+rect -178 -160 178 -128
+<< metal1 >>
+rect -356 202 -278 234
+rect 278 202 356 234
+rect -356 156 -324 202
+rect -188 164 188 165
+rect -188 124 -178 164
+rect 178 124 188 164
+rect -188 123 188 124
+rect 324 156 356 202
+rect -268 85 -254 86
+rect -222 85 -208 86
+rect -268 -85 -258 85
+rect -218 -85 -208 85
+rect -268 -86 -254 -85
+rect -222 -86 -208 -85
+rect 208 85 222 86
+rect 254 85 268 86
+rect 208 -85 218 85
+rect 258 -85 268 85
+rect 208 -86 222 -85
+rect 254 -86 268 -85
+rect -356 -202 -324 -156
+rect -188 -124 188 -123
+rect -188 -164 -178 -124
+rect 178 -164 188 -124
+rect -188 -165 188 -164
+rect 324 -202 356 -156
+rect -356 -234 -278 -202
+rect 278 -234 356 -202
+<< via1 >>
+rect -178 160 178 164
+rect -178 128 178 160
+rect -178 124 178 128
+rect -258 -85 -254 85
+rect -254 -85 -222 85
+rect -222 -85 -218 85
+rect 218 -85 222 85
+rect 222 -85 254 85
+rect 254 -85 258 85
+rect -178 -128 178 -124
+rect -178 -160 178 -128
+rect -178 -164 178 -160
+<< metal2 >>
+rect -178 164 178 173
+rect -178 115 178 124
+rect -258 85 -218 94
+rect -258 -94 -218 -85
+rect 218 85 258 94
+rect 218 -94 258 -85
+rect -178 -124 178 -115
+rect -178 -173 178 -164
+<< labels >>
+rlabel hvpsubdiffcont 0 -218 0 -218 0 B
+port 1 nsew
+rlabel hvndiffc -238 0 -238 0 0 D
+port 2 nsew
+rlabel hvndiffc 238 0 238 0 0 S
+port 3 nsew
+rlabel polycont 0 144 0 144 0 G
+port 4 nsew
+<< properties >>
+string FIXED_BBOX -340 -218 340 218
+string gencell sg13_hv_nmos
+string library sg13cmos5l
+string parameters w 1.0 l 2.0 m 1 ng 1 diffcov 100 polycov 100 guard 1 glc 1 grc 1 gtc 1 gbc 1 tbcov 100 rlcov 100 topc 1 botc 1 poverlap 0 doverlap 1 lmin 0.45 wmin 0.15 class mosfet compatible {sg13_lv_nmos sg13_hv_nmos} full_metal 1 conn_gates 0 gate_ring 0 doports 1 viasrc 100 viadrn 100 viagate 100 ccols 1 viagb 0 viagr 0 viagl 0 viagt 0
+<< end >>
