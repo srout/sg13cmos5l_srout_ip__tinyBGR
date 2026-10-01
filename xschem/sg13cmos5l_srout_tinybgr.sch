@@ -114,6 +114,43 @@ N -400 -310 -400 -300 {lab=#net3}
 N -400 -30 80 -30 {lab=AVSS}
 N -400 -150 -400 -30 {lab=AVSS}
 N -440 -30 -400 -30 {lab=AVSS}
+N 560 -60 560 -30 {lab=AVSS}
+N 500 -30 560 -30 {lab=AVSS}
+N 500 -90 520 -90 {lab=AVSS}
+N 500 -90 500 -30 {lab=AVSS}
+N 340 -30 500 -30 {lab=AVSS}
+N 560 -140 560 -120 {lab=AVSS}
+N 500 -140 560 -140 {lab=AVSS}
+N 500 -140 500 -90 {lab=AVSS}
+N 690 -60 690 -30 {lab=AVSS}
+N 630 -30 690 -30 {lab=AVSS}
+N 630 -90 650 -90 {lab=AVSS}
+N 630 -90 630 -30 {lab=AVSS}
+N 560 -30 630 -30 {lab=AVSS}
+N 690 -140 690 -120 {lab=AVSS}
+N 630 -140 690 -140 {lab=AVSS}
+N 630 -140 630 -90 {lab=AVSS}
+N 690 -90 710 -90 {lab=AVSS}
+N 710 -90 710 -30 {lab=AVSS}
+N 690 -30 710 -30 {lab=AVSS}
+N 820 -60 820 -30 {lab=AVSS}
+N 760 -30 820 -30 {lab=AVSS}
+N 760 -90 780 -90 {lab=AVSS}
+N 760 -90 760 -30 {lab=AVSS}
+N 710 -30 760 -30 {lab=AVSS}
+N 820 -90 840 -90 {lab=AVSS}
+N 840 -90 840 -30 {lab=AVSS}
+N 820 -30 840 -30 {lab=AVSS}
+N 820 -140 820 -120 {lab=Vgn}
+N 940 -60 940 -30 {lab=AVSS}
+N 880 -30 940 -30 {lab=AVSS}
+N 880 -90 900 -90 {lab=AVSS}
+N 880 -90 880 -30 {lab=AVSS}
+N 840 -30 880 -30 {lab=AVSS}
+N 940 -90 960 -90 {lab=AVSS}
+N 960 -90 960 -30 {lab=AVSS}
+N 940 -30 960 -30 {lab=AVSS}
+N 940 -140 940 -120 {lab=#net4}
 C {sg13cmos5l_pr/pnpMPA.sym} 320 -100 0 0 {name=Q1
 m=8
 a=1.4p
@@ -208,3 +245,27 @@ C {lab_wire.sym} 80 -160 0 0 {name=p5 sig_type=std_logic lab=Vbe2}
 C {lab_wire.sym} 340 -140 0 0 {name=p6 sig_type=std_logic lab=Vbe1}
 C {lab_wire.sym} 340 -270 0 0 {name=p7 sig_type=std_logic lab=Vbe2mr}
 C {sg13cmos5l_srout_tinybgr_res.sym} 280 -160 0 0 {name=xbgrres}
+C {sg13cmos5l_pr/pnpMPA.sym} 540 -90 0 0 {name=Q3
+m=2
+a=1.4p
+p=5.4u}
+C {sg13cmos5l_pr/sg13_hv_nmos.sym} 670 -90 0 0 {name=MN3
+l=1u
+w=2.6u
+ng=1
+m=2
+}
+C {sg13cmos5l_pr/sg13_hv_nmos.sym} 800 -90 0 0 {name=MN4
+l=1u
+w=2.6u
+ng=1
+m=2
+}
+C {lab_wire.sym} 820 -140 0 0 {name=p12 sig_type=std_logic lab=Vgn}
+C {sg13cmos5l_pr/sg13_hv_nmos.sym} 920 -90 0 0 {name=MN5
+l=1u
+w=2.6u
+ng=1
+m=2
+}
+C {lab_wire.sym} 940 -140 0 0 {name=p14 sig_type=std_logic lab=Vgp}

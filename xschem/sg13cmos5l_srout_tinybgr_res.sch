@@ -44,6 +44,12 @@ N -620 -430 -620 -410 {lab=Vref}
 N -620 60 -620 90 {lab=#net27}
 N -620 90 -490 90 {lab=#net27}
 N -490 60 -490 90 {lab=#net27}
+N 250 -0 250 20 {lab=AVSS}
+N 250 -120 250 -90 {lab=AVSS}
+N 210 -120 250 -120 {lab=AVSS}
+N 210 -120 210 -0 {lab=AVSS}
+N 210 -0 250 -0 {lab=AVSS}
+N 250 -30 250 -0 {lab=AVSS}
 C {sg13cmos5l_pr/rhigh.sym} 70 -140 0 0 {name=R3
 l=4u
 w=1.1u
@@ -181,7 +187,7 @@ m=1
 body=AVSS}
 C {iopin.sym} 70 0 1 0 {name=p1 lab=Vbe1}
 C {iopin.sym} -110 0 1 0 {name=p2 lab=Vbe2}
-C {iopin.sym} -20 0 1 0 {name=p3 lab=AVSS}
+C {iopin.sym} 250 20 1 0 {name=p3 lab=AVSS}
 C {iopin.sym} 70 -200 3 0 {name=p4 lab=Vbe2mr}
 C {iopin.sym} -620 -430 3 0 {name=p5 lab=Vref}
 C {sg13cmos5l_pr/rhigh.sym} -490 30 0 0 {name=R28
@@ -193,4 +199,9 @@ C {sg13cmos5l_pr/rhigh.sym} -620 30 0 0 {name=R29
 l=4u
 w=1.1u
 m=1
+body=AVSS}
+C {sg13cmos5l_pr/rhigh.sym} 250 -60 0 0 {name=R30
+l=4u
+w=1.1u
+m=9
 body=AVSS}
