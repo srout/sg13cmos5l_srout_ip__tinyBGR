@@ -43,7 +43,6 @@ N 350 -540 510 -540 {lab=AVDD}
 N 510 -480 520 -480 {lab=AVDD}
 N 520 -540 520 -480 {lab=AVDD}
 N 510 -540 520 -540 {lab=AVDD}
-N 340 -420 440 -420 {lab=Vgp}
 N 340 -450 340 -420 {lab=Vgp}
 N 440 -480 440 -420 {lab=Vgp}
 N 440 -480 470 -480 {lab=Vgp}
@@ -150,7 +149,58 @@ N 840 -30 880 -30 {lab=AVSS}
 N 940 -90 960 -90 {lab=AVSS}
 N 960 -90 960 -30 {lab=AVSS}
 N 940 -30 960 -30 {lab=AVSS}
-N 940 -140 940 -120 {lab=#net4}
+N 940 -140 940 -120 {lab=Vgp}
+N 440 -420 600 -420 {lab=Vgp}
+N 340 -420 440 -420 {lab=Vgp}
+N 600 -480 600 -420 {lab=Vgp}
+N 600 -480 620 -480 {lab=Vgp}
+N 660 -540 660 -510 {lab=AVDD}
+N 520 -540 660 -540 {lab=AVDD}
+N 650 -480 670 -480 {lab=AVDD}
+N 660 -540 670 -540 {lab=AVDD}
+N 660 -450 660 -430 {lab=AVDD}
+N 660 -430 670 -430 {lab=AVDD}
+N 670 -480 670 -430 {lab=AVDD}
+N 670 -540 670 -480 {lab=AVDD}
+N 790 -540 790 -510 {lab=AVDD}
+N 730 -540 790 -540 {lab=AVDD}
+N 790 -480 800 -480 {lab=AVDD}
+N 800 -540 800 -480 {lab=AVDD}
+N 790 -540 800 -540 {lab=AVDD}
+N 730 -480 750 -480 {lab=AVDD}
+N 730 -540 730 -480 {lab=AVDD}
+N 670 -540 730 -540 {lab=AVDD}
+N 790 -450 790 -430 {lab=Vgn}
+N 910 -540 910 -510 {lab=AVDD}
+N 850 -540 910 -540 {lab=AVDD}
+N 910 -480 920 -480 {lab=AVDD}
+N 920 -540 920 -480 {lab=AVDD}
+N 910 -540 920 -540 {lab=AVDD}
+N 850 -480 870 -480 {lab=AVDD}
+N 850 -540 850 -480 {lab=AVDD}
+N 910 -450 910 -430 {lab=IOUT1}
+N 800 -540 850 -540 {lab=AVDD}
+N 1030 -540 1030 -510 {lab=AVDD}
+N 970 -540 1030 -540 {lab=AVDD}
+N 1030 -480 1040 -480 {lab=AVDD}
+N 1040 -540 1040 -480 {lab=AVDD}
+N 1030 -540 1040 -540 {lab=AVDD}
+N 970 -480 990 -480 {lab=AVDD}
+N 970 -540 970 -480 {lab=AVDD}
+N 1030 -450 1030 -430 {lab=VREF}
+N 920 -540 970 -540 {lab=AVDD}
+N 1150 -540 1150 -510 {lab=AVDD}
+N 1090 -540 1150 -540 {lab=AVDD}
+N 1150 -480 1160 -480 {lab=AVDD}
+N 1160 -540 1160 -480 {lab=AVDD}
+N 1150 -540 1160 -540 {lab=AVDD}
+N 1090 -480 1110 -480 {lab=AVDD}
+N 1090 -540 1090 -480 {lab=AVDD}
+N 1150 -450 1150 -430 {lab=AVDD}
+N 1040 -540 1090 -540 {lab=AVDD}
+N 1150 -430 1200 -430 {lab=AVDD}
+N 1200 -540 1200 -430 {lab=AVDD}
+N 1160 -540 1200 -540 {lab=AVDD}
 C {sg13cmos5l_pr/pnpMPA.sym} 320 -100 0 0 {name=Q1
 m=8
 a=1.4p
@@ -269,3 +319,36 @@ ng=1
 m=2
 }
 C {lab_wire.sym} 940 -140 0 0 {name=p14 sig_type=std_logic lab=Vgp}
+C {sg13cmos5l_pr/sg13_hv_pmos.sym} 640 -480 0 0 {name=MP4
+l=4u
+w=1u
+ng=1
+m=4
+}
+C {sg13cmos5l_pr/sg13_hv_pmos.sym} 770 -480 0 0 {name=MP6
+l=4u
+w=1u
+ng=1
+m=1
+}
+C {lab_wire.sym} 790 -430 0 0 {name=p16 sig_type=std_logic lab=Vgn}
+C {sg13cmos5l_pr/sg13_hv_pmos.sym} 890 -480 0 0 {name=MP7
+l=4u
+w=1u
+ng=1
+m=1
+}
+C {lab_wire.sym} 910 -430 0 0 {name=p17 sig_type=std_logic lab=IOUT1}
+C {sg13cmos5l_pr/sg13_hv_pmos.sym} 1010 -480 0 0 {name=MP8
+l=4u
+w=1u
+ng=1
+m=1
+}
+C {lab_wire.sym} 1030 -430 0 0 {name=p18 sig_type=std_logic lab=VREF}
+C {sg13cmos5l_pr/sg13_hv_pmos.sym} 1130 -480 0 0 {name=MP9
+l=4u
+w=1u
+ng=1
+m=9
+}
