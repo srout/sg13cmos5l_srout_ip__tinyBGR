@@ -1,0 +1,77 @@
+* expanding   symbol:  sg13cmos5l_srout_tinybgr.sym # of pins=4
+** sym_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/sg13cmos5l_srout_tinybgr.sym
+** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/sg13cmos5l_srout_tinybgr.sch
+.subckt sg13cmos5l_srout_tinybgr AVDD VREF IOUT1 AVSS
+*.iopin AVDD
+*.iopin AVSS
+*.opin VREF
+*.opin IOUT1
+XQ1 AVSS AVSS Vbe1 pnpMPA a=1.4e-12 p=5.4e-06 m=8
+XQ2 AVSS AVSS Vbe2 pnpMPA a=1.4e-12 p=5.4e-06
+XMN2 Vgn Vgn Vbe2 AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=6 mm_ok=1
+XMN1 Vgp Vgn Vbe2mr AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=12 mm_ok=1
+XMP2 Vgn Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3 mm_ok=1
+XMP1 Vgp Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=6 mm_ok=1
+XMP3 IOUT1 Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=11 mm_ok=1
+XMP5 VREF Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3 mm_ok=1
+XMNSU1 AVDD vgsu1 Vgn AVSS sg13_hv_nmos w=1u l=2u ng=1 m=1 mm_ok=1
+XMPSU1 net1 VREF AVDD AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1 mm_ok=1
+XMNSU2 vgsu1 VREF AVSS AVSS sg13_hv_nmos w=1u l=1u ng=1 m=1 mm_ok=1
+XMPSU2 net2 VREF net1 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1 mm_ok=1
+XMPSU3 net3 VREF net2 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1 mm_ok=1
+XMPSU4 vgsu1 VREF net3 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1 mm_ok=1
+xbgrres VREF Vbe2mr AVSS Vbe2 Vbe1 sg13cmos5l_srout_tinybgr_res
+XQ3 AVSS AVSS AVSS pnpMPA a=1.4e-12 p=5.4e-06 m=2
+XMN3 AVSS AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=2 mm_ok=1
+XMN4 Vgn AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=2 mm_ok=1
+XMN5 Vgp AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=4 mm_ok=1
+XMP4 AVDD Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=4 mm_ok=1
+XMP6 Vgn AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1 mm_ok=1
+XMP7 IOUT1 AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1 mm_ok=1
+XMP8 VREF AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1 mm_ok=1
+XMP9 AVDD AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=9 mm_ok=1
+.ends
+
+
+* expanding   symbol:  sg13cmos5l_srout_tinybgr_res.sym # of pins=5
+** sym_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/sg13cmos5l_srout_tinybgr_res.sym
+** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/sg13cmos5l_srout_tinybgr_res.sch
+.subckt sg13cmos5l_srout_tinybgr_res Vref Vbe2mr AVSS Vbe2 Vbe1
+*.iopin Vbe1
+*.iopin Vbe2
+*.iopin AVSS
+*.iopin Vbe2mr
+*.iopin Vref
+XR3 Vbe2mr net21 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR1 net21 Vbe1 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR2 net2 net1 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR4 net1 Vbe2 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR5 net3 net2 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR6 net4 net3 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR7 net22 net4 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR8 net6 net5 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR9 net5 net23 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR10 net7 net6 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR11 net8 net7 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR12 net22 net8 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR13 net10 net9 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR14 net9 net23 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR15 net11 net10 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR16 net12 net11 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR17 net24 net12 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR18 net14 net13 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR19 net13 net25 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR20 net15 net14 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR21 net16 net15 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR22 net24 net16 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR23 net18 net17 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR24 net17 net26 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR25 net19 net18 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR26 net20 net19 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR27 Vref net20 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR28 net25 net27 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR29 net26 net27 AVSS rhigh w=1.1u l=4u m=1 b=0 mm_ok=1
+XR30 AVSS AVSS AVSS rhigh w=1.1u l=4u m=9 b=0 mm_ok=1
+.ends
+
+.end

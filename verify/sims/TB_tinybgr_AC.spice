@@ -1,0 +1,50 @@
+** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/TB_tinybgr_AC.sch
+**.subckt TB_tinybgr_AC
+Vsup AVDD5V 0 DC PAR_VDD5 AC 1 0
+C3 VREF 0 10f
+Viout1 IOUT1 0 1
+xbgrtop AVDD5V VREF IOUT1 0 sg13cmos5l_srout_tinybgr
+**** begin user architecture code
+
+.option savecurrents
+.save all onoise_spectrum
+.PARAM PAR_VDD5=3.3
+.PARAM PAR_POFF=0
+.PARAM PAR_NOFF=0
+.TEMP 27
+
+*.MEASURE AC PSR100 FIND VDB(VREF) AT=100
+*.MEASURE AC PSR10k  FIND VDB(VREF) AT=1e4
+*.MEASURE AC PSR100M FIND VDB(VREF) AT=1e8
+
+*.NOISE V(VREF) Vsup DEC 10 10 1e4
+
+.print onoise_total
+
+.control
+run
+save all
+
+**Transient
+*AC DEC 10 10 1e8
+NOISE V(VREF) Vsup DEC 10 10 1e4
+SETPLOT noise1
+let total_noise_sq = integ(onoise_spectrum^2)
+let total_noise_rms = sqrt(total_noise_sq[length(total_noise_sq)-1])
+PRINT total_noise_rms
+PLOT ONOISE_SPECTRUM xlog
+*PRINT ONOISE_TOTAL
+*PLOT VDB(VREF)
+
+.endc
+
+
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerRES.lib res_typ
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerDIO.lib dio_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerPNP.lib typ
+
+**Instantiate netlist
+.INCLUDE "sg13cmos5l_srout_tinybgr_rcx.spice"
+

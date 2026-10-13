@@ -1,0 +1,38 @@
+** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/TB_tinybgr_tran.sch
+**.subckt TB_tinybgr_tran
+Vsup AVDD5V 0 DC PAR_VDD5 AC 1 0 PWL(0 0 PAR_VDDRISE PAR_VDD5)
+C3 VREF 0 10f
+Viout1 IOUT1 0 1
+xbgrtop AVDD5V VREF IOUT1 0 sg13cmos5l_srout_tinybgr
+**** begin user architecture code
+
+.option savecurrents
+.PARAM PAR_VDD5=3.3
+.PARAM PAR_VDDRISE=0.5e-3
+.PARAM PAR_POFF=0
+.PARAM PAR_NOFF=0
+.TEMP 27
+
+.MEASURE TRAN tstart WHEN V(VREF)=1.0 RISE=1
+.MEASURE TRAN vref FIND V(VREF) AT=2e-3
+
+.control
+run
+save all
+
+**Transient
+TRAN 1u 2e-3
+
+PLOT V(VREF) V(xbgrtop.vgsu1) V(xbgrtop.vgn) V(xbgrtop.vgp)
+
+.endc
+
+
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerRES.lib res_typ
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerDIO.lib dio_tt
+.lib /foss/pdks/ihp-sg13cmos5l/libs.tech/ngspice/models/cornerPNP.lib typ
+
+
+.INCLUDE "sg13cmos5l_srout_tinybgr_rcx.spice"
