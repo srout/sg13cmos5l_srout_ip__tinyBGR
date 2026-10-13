@@ -3,3 +3,6 @@ xschem/simulations
 */*/temp
 magic/*.ext
 magic/lvs/
+verify/*.raw
+verify/*/*.raw
+
