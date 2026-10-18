@@ -1,7 +1,7 @@
 ** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/TB_tinybgr_tran.sch
 **.subckt TB_tinybgr_tran
 Vsup AVDD5V 0 DC PAR_VDD5 AC 1 0 PWL(0 0 PAR_VDDRISE PAR_VDD5)
-C3 VREF 0 10f
+C3 VREF 0 20e-12
 Viout1 IOUT1 0 1
 xbgrtop AVDD5V VREF IOUT1 0 sg13cmos5l_srout_tinybgr
 **** begin user architecture code
