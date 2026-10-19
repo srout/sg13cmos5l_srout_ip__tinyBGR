@@ -1,30 +1,30 @@
 ** sch_path: /foss/designs/gits/sg13cmos5l_srout_ip__tinyBGR/xschem/sg13cmos5l_srout_tinybgr.sch
-.subckt sg13cmos5l_srout_tinybgr AVDD VREF IOUT1 AVSS
-*.PININFO AVDD:B AVSS:B VREF:O IOUT1:O
-XQ1 AVSS AVSS Vbe1 pnpMPA a=1.4e-12 p=5.4e-06 m=8
-XQ2 AVSS AVSS Vbe2 pnpMPA a=1.4e-12 p=5.4e-06
-XMN2 Vgn Vgn Vbe2 AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=6
-XMN1 Vgp Vgn Vbe2mr AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=12
-XMP2 Vgn Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3
-XMP1 Vgp Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=6
-XMP3 IOUT1 Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=11
-XMP5 VREF Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=3
-XMNSU1 AVDD vgsu1 Vgn AVSS sg13_hv_nmos w=1u l=2u ng=1 m=1
-XMPSU1 net1 VREF AVDD AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1
-XMNSU2 vgsu1 VREF AVSS AVSS sg13_hv_nmos w=1u l=1u ng=1 m=1
-XMPSU2 net2 VREF net1 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1
-XMPSU3 net3 VREF net2 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1
-XMPSU4 vgsu1 VREF net3 AVDD sg13_hv_pmos w=0.35u l=6u ng=1 m=1
-xbgrres VREF Vbe2mr AVSS Vbe2 Vbe1 sg13cmos5l_srout_tinybgr_res
-XQ3 AVSS AVSS AVSS pnpMPA a=1.4e-12 p=5.4e-06 m=2
-XMN3 AVSS AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=2
-XMN4 Vgn AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=2
-XMN5 Vgp AVSS AVSS AVSS sg13_hv_nmos w=2.6u l=1u ng=1 m=4
-XMP4 AVDD Vgp AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=4
-XMP6 Vgn AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1
-XMP7 IOUT1 AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1
-XMP8 VREF AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=1
-XMP9 AVDD AVDD AVDD AVDD sg13_hv_pmos w=1u l=4u ng=1 m=9
+.subckt sg13cmos5l_srout_tinybgr vdd_3v3 vbias ibias0 vss_3v3
+*.PININFO vdd_3v3:B vss_3v3:B vbias:O ibias0:O
+XQ1 vss_3v3 vss_3v3 Vbe1 pnpMPA a=1.4e-12 p=5.4e-06 m=8
+XQ2 vss_3v3 vss_3v3 Vbe2 pnpMPA a=1.4e-12 p=5.4e-06
+XMN2 Vgn Vgn Vbe2 vss_3v3 sg13_hv_nmos w=2.6u l=1u ng=1 m=6
+XMN1 Vgp Vgn Vbe2mr vss_3v3 sg13_hv_nmos w=2.6u l=1u ng=1 m=12
+XMP2 Vgn Vgp vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=3
+XMP1 Vgp Vgp vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=6
+XMP3 ibias0 Vgp vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=11
+XMP5 vbias Vgp vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=3
+XMNSU1 vdd_3v3 vgsu1 Vgn vss_3v3 sg13_hv_nmos w=1u l=2u ng=1 m=1
+XMPSU1 net1 vbias vdd_3v3 vdd_3v3 sg13_hv_pmos w=0.35u l=6u ng=1 m=1
+XMNSU2 vgsu1 vbias vss_3v3 vss_3v3 sg13_hv_nmos w=1u l=1u ng=1 m=1
+XMPSU2 net2 vbias net1 vdd_3v3 sg13_hv_pmos w=0.35u l=6u ng=1 m=1
+XMPSU3 net3 vbias net2 vdd_3v3 sg13_hv_pmos w=0.35u l=6u ng=1 m=1
+XMPSU4 vgsu1 vbias net3 vdd_3v3 sg13_hv_pmos w=0.35u l=6u ng=1 m=1
+xbgrres vbias Vbe2mr vss_3v3 Vbe2 Vbe1 sg13cmos5l_srout_tinybgr_res
+XQ3 vss_3v3 vss_3v3 vss_3v3 pnpMPA a=1.4e-12 p=5.4e-06 m=2
+XMN3 vss_3v3 vss_3v3 vss_3v3 vss_3v3 sg13_hv_nmos w=2.6u l=1u ng=1 m=2
+XMN4 Vgn vss_3v3 vss_3v3 vss_3v3 sg13_hv_nmos w=2.6u l=1u ng=1 m=2
+XMN5 Vgp vss_3v3 vss_3v3 vss_3v3 sg13_hv_nmos w=2.6u l=1u ng=1 m=4
+XMP4 vdd_3v3 Vgp vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=4
+XMP6 Vgn vdd_3v3 vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=1
+XMP7 ibias0 vdd_3v3 vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=1
+XMP8 vbias vdd_3v3 vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=1
+XMP9 vdd_3v3 vdd_3v3 vdd_3v3 vdd_3v3 sg13_hv_pmos w=1u l=4u ng=1 m=9
 .ends
 
 * expanding   symbol:  sg13cmos5l_srout_tinybgr_res.sym # of pins=5
