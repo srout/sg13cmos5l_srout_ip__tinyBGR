@@ -2,10 +2,10 @@
 **.subckt TB_tinybgr
 Vsup vdd_3v3 0 PAR_VDD3v3
 Vgnd vss_3v3 0 0
-C3 vbias 0 10f
-Viout1 ibias0 0 1
-*xbgrtop ADD5V vbias IOUT1 0 sg13cmos5l_srout_tinybgr
-Xslot15_wrapper vss_3v3 s15_an[0] s15_an_0_esd vbias dig_in[23] dig_in[22]
+C3 VREF 0 10f
+Viout1 analog_bus0 0 1
+*xbgrtop ADD5V VREF IOUT1 0 sg13cmos5l_srout_tinybgr
+Xslot15_wrapper vss_3v3 VREF s15_an_0_esd vbias dig_in[23] dig_in[22]
 + dig_in[21] dig_in[20] dig_in[19] dig_in[18] dig_in[17] dig_in[16] dig_in[15] dig_in[14]
 + dig_in[13] dig_in[12] dig_in[11] dig_in[10] dig_in[9] dig_in[8] dig_in[7] dig_in[6]
 + dig_in[5] dig_in[4] dig_in[3] dig_in[2] dig_in[1] dig_in[0] dig_out[11] dig_out[10]
@@ -37,18 +37,18 @@ op
 * dc Vref 3.3 1.5 -0.1
 DC TEMP -30 125 1
 **write dc.raw
-PLOT V(vbias)
+PLOT V(VREF)
 **PLOT I(VIOUT1)
 ** PLOT @n.xbgrtop.xmnsu1.nsg13_hv_nmos[ids]
 **PLOT @n.xbgrtop.xmnsu2.nsg13_hv_nmos[ids]
 **PLOT V(xbgrtop.vgsu1)
 ** Calculating tempco
-*MEAS DC vrefMAX_m40to125 MAX V(vbias) FROM=-40 TO=125
-*MEAS DC vrefMIN_m40to125 MIN V(vbias) FROM=-40 TO=125
-MEAS DC vrefMAX_m30to85 MAX V(vbias) FROM=-30 TO=85
-MEAS DC vrefMIN_m30to85 MIN V(vbias) FROM=-30 TO=85
-MEAS DC vrefMAX_m20to85 MAX V(vbias) FROM=-20 TO=85
-MEAS DC vrefMIN_m20to85 MIN V(vbias) FROM=-20 TO=85
+*MEAS DC vrefMAX_m40to125 MAX V(VREF) FROM=-40 TO=125
+*MEAS DC vrefMIN_m40to125 MIN V(VREF) FROM=-40 TO=125
+MEAS DC vrefMAX_m30to85 MAX V(VREF) FROM=-30 TO=85
+MEAS DC vrefMIN_m30to85 MIN V(VREF) FROM=-30 TO=85
+MEAS DC vrefMAX_m20to85 MAX V(VREF) FROM=-20 TO=85
+MEAS DC vrefMIN_m20to85 MIN V(VREF) FROM=-20 TO=85
 MEAS DC Iout25 FIND I(VIOUT1) At=25
 
 *LET tempco_m40_125_ppmC=1e6*(vrefMAX_m40to125 - vrefMIN_m40to125)/165/1.25

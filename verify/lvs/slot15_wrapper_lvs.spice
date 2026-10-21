@@ -151,7 +151,7 @@ X0 S G D B sg13_hv_nmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=2u
 X0 S G D B sg13_hv_nmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=1u
 .ends
 
-.subckt sg13cmos5l_srout_tinybgr VREF IOUT1 AVSS AVDD
+.subckt sg13cmos5l_srout_tinybgr VREF IOUT1 AVDD AVSS
 XXMP2 AVDD AVDD AVDD AVDD AVDD AVDD AVDD AVDD AVDD AVDD XMP2/G9 AVDD AVDD XMP2/G9
 + XMP2/G9 IOUT1 AVDD AVDD XMP2/G9 AVDD AVDD XMP2/G9 XMP2/G9 IOUT1 AVDD AVDD XMP2/G9
 + AVDD AVDD XMN2/G7 XMP2/G9 VREF IOUT1 AVDD XMP2/G9 AVDD AVDD XMP2/G9 XMP2/G9 IOUT1
@@ -186,6 +186,6 @@ XXMNSU2 AVSS XMNSU2/D AVSS VREF sg13_hv_nmos_F98C5B
 + dig_out[9] dig_out[8] dig_out[7] dig_out[6] dig_out[5] dig_out[4] dig_out[3] dig_out[2]
 + dig_out[1] dig_out[0] ibias0 ibias1 analog_bus3 analog_bus2 analog_bus1 analog_bus0
 + vss_1v2 vdd_1v2 vdd_3v3 enable clk reset
-Xsg13cmos5l_srout_tinybgr_0 vbias ibias0 vss_3v3 vdd_3v3 sg13cmos5l_srout_tinybgr
+Xsg13cmos5l_srout_tinybgr_0 s15_an[0] analog_bus0 vdd_3v3 vss_3v3 sg13cmos5l_srout_tinybgr
 .ends
 
