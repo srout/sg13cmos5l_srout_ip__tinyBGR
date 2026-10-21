@@ -1,9 +1,9 @@
 magic
 tech ihp-sg13cmos5l
 magscale 1 2
-timestamp 1790758745
+timestamp 1792579057
 << pwell >>
-rect -3782 -470 3782 470
+rect -3782 -490 3782 470
 << hvnmos >>
 rect -3550 -260 -3350 260
 rect -3274 -260 -3074 260
@@ -177,19 +177,19 @@ rect -3720 316 -3660 348
 rect -3720 -316 -3706 316
 rect -3674 -316 -3660 316
 rect 3660 316 3720 348
-rect -3720 -348 -3660 -316
+rect -3720 -368 -3660 -316
 rect 3660 -316 3674 316
 rect 3706 -316 3720 316
-rect 3660 -348 3720 -316
-rect -3720 -362 3720 -348
-rect -3720 -394 -3628 -362
-rect 3628 -394 3720 -362
-rect -3720 -408 3720 -394
+rect 3660 -368 3720 -316
+rect -3720 -382 3720 -368
+rect -3720 -414 -3628 -382
+rect 3628 -414 3720 -382
+rect -3720 -428 3720 -414
 << hvpsubdiffcont >>
 rect -3628 362 3628 394
 rect -3706 -316 -3674 316
 rect 3674 -316 3706 316
-rect -3628 -394 3628 -362
+rect -3628 -414 3628 -382
 << poly >>
 rect -3550 320 -3350 334
 rect -3550 288 -3510 320
@@ -563,7 +563,7 @@ rect 3286 -197 3296 197
 rect 3328 -197 3338 197
 rect 3562 -197 3572 197
 rect 3604 -197 3614 197
-rect -3706 -362 -3674 -316
+rect -3706 -382 -3674 -316
 rect -3520 -320 -3510 -288
 rect -3390 -320 -3380 -288
 rect -3244 -320 -3234 -288
@@ -616,12 +616,10 @@ rect 3104 -320 3114 -288
 rect 3234 -320 3244 -288
 rect 3380 -320 3390 -288
 rect 3510 -320 3520 -288
-rect 3674 -362 3706 -316
-rect -3706 -394 -3628 -362
-rect 3628 -394 3706 -362
+rect 3674 -382 3706 -316
+rect -3706 -414 -3628 -382
+rect 3628 -414 3706 -382
 << labels >>
-rlabel hvpsubdiffcont 0 -378 0 -378 0 B
-port 1 nsew
 rlabel hvndiffc -3588 0 -3588 0 0 D0
 port 2 nsew
 rlabel polycont -3450 304 -3450 304 0 G0
@@ -726,6 +724,8 @@ rlabel hvndiffc 3312 0 3312 0 0 S25
 port 52 nsew
 rlabel polycont 3450 304 3450 304 0 G25
 port 53 nsew
+rlabel hvpsubdiffcont 0 -398 0 -398 0 B
+port 1 nsew
 << properties >>
 string FIXED_BBOX -3690 -378 3690 378
 string gencell sg13_hv_nmos
