@@ -3,6 +3,8 @@ A compact bandgap reference (BGR) in IHP SG13CMOS5L as part of Chipalooza #2
 
 ![Schemtics: Tiny BGR](docs/sg13cmos5l_srout_tinybgr.png)
 
+Schmatic
+
 ![Schemtics: Tiny BGRLayout ](docs/sg13cmos5l_srout_tinybgr_layout.png)
 
 This is a compact version of classic bandgap reference to provide designers the option of generating a bandgap voltage (1.2V) using a small area at the expense of performance. 
