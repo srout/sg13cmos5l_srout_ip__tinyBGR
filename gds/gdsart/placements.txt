@@ -1,0 +1,11 @@
+# GDS-art placements for insert_gdsart.py
+# <gds>              <x_um>   <y_um>   [orient]  [anchor=ll|center|origin] [name=CELL] [cell=CELL]
+# Relative paths are taken from this file's directory.
+#cnic_art.gds         120.0    40.0
+#logo_art.gds         300.0    5.0      R90       anchor=center   name=LOGO_ART
+#cnic_art.gds         20.0     400.0    MY        name=CNIC_ART_MIRROR
+#
+gdsart_2026_Chipalooza_TinyBGR.gds	40.0	235.0 MY
+gdsart_0i0.gds				125.0	120.0
+gdsart_CNIC_SILICON_ODISHA.gds		135.0	60.0 MY
+gdsart_scale.gds			130.0	15.0 MY
