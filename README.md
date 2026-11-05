@@ -1,14 +1,7 @@
 # Compact Bandgap Reference (BGR)
-A compact bandgap reference (BGR) in IHP SG13CMOS5L as part of Chipalooza #2
-
-![Schemtics: Tiny BGR](docs/sg13cmos5l_srout_tinybgr.png)
-
-Schmatic
-
-![Schemtics: Tiny BGRLayout ](docs/sg13cmos5l_srout_tinyBGR_layout.png)
-
-This is a compact version of classic bandgap reference to provide designers the option of generating a bandgap voltage (1.2V) using a small area at the expense of performance. 
-It is intended to fit inside an existing Pad without taking up extra area in the core. It can serve as reference for various application including LDOs, low-resolution converters, etc.
+A compact bandgap reference (BGR) in IHP SG13CMOS5L as part of Chipalooza #2. This is a compact version of classic bandgap reference to provide designers the option of generating a bandgap voltage (1.2V) using a small area at the expense of performance. 
+It is intended to fit inside an existing VDD Pad without taking up extra area in the core. It can serve as reference for various application including LDOs, low-resolution converters, etc.
+It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasing or even as a temperature sensor with calibration. 
 
 # Folder Structure
 
@@ -21,12 +14,12 @@ It is intended to fit inside an existing Pad without taking up extra area in the
 ├── scripts/     GDS stream-out and netlist extraction scripts
 ├── verify/      LVS and post-layout simulation decks
 ├── gds/         Intermediate GDS and GDS artwork
-└── final/       Final GDS for Chipalooza submission
+└── final/gds    Final GDS for Chipalooza submission
 ```
 
 - **docs/**: characterization report (`sg13cmos5l_srout_ip__tinyBGR_char.pdf`), schematic and floorplan images.
 - **xschem/**: top-level BGR (`sg13cmos5l_srout_tinybgr.sch/.sym`), resistor sub-block (`sg13cmos5l_srout_tinybgr_res.sch/.sym`) and testbenches (`TB_tinybgr*.sch`) for DC characterization, AC and transient.
-- **netlist/**: SPICE testbenches (`TB_tinybgr_DCchar`, `_AC`, `_tran`).
+- **netlist/**: SPICE testbenches (`TB_tinybgr_DCchar`, `_AC`, `_tran`). 
 - **magic/**: top-level layout (`sg13cmos5l_srout_tinybgr.mag`), Chipalooza slot 15 wrapper (`slot15_wrapper.mag`) and generated device cells (`sg13_hv_nmos_*`, `sg13_hv_pmos_*`, `rhigh_*`, `pnpMPA_*`).
   - `drc_full.tcl`, `run_drc_mag.sh`: DRC in Magic.
   - `extract-lvs-net.tcl`: layout netlist extraction for LVS.
@@ -38,6 +31,7 @@ It is intended to fit inside an existing Pad without taking up extra area in the
 - **gds/**: intermediate GDS (`tinybgr_floorplan.gds`, `slot15_wrapper.gds`) and `gdsart/` (GDS artwork with generation, render and DRC scripts).
 - **final/gds/**: `slot_15.gds`, pulled automatically into the Chipalooza chip.
 
+
 ## Design Flow
 
 1. Draw the schematic in `xschem/` and simulate (`netlist/`, `verify/sims/`).
@@ -45,6 +39,17 @@ It is intended to fit inside an existing Pad without taking up extra area in the
 3. Extract (`scripts/extract_*.sh`) and run LVS (`verify/lvs/`).
 4. Re-simulate with PEX/RCX netlists in `verify/sims/`.
 5. Stream out GDS (`scripts/create_slot15_gds.sh`) to `final/gds/slot_15.gds`.
+
+# Design
+![Schemtics: Tiny BGR](docs/sg13cmos5l_srout_tinybgr.png)
+
+Schmatic
+
+![Tiny BGRLayout ](docs/sg13cmos5l_srout_tinyBGR_layout.png)
+
+
+
+
 
 # Resources
 
