@@ -1,7 +1,9 @@
 # Compact Bandgap Reference (BGR)
 A compact bandgap reference (BGR) in IHP SG13CMOS5L as part of Chipalooza #2. This is a compact version of classic bandgap reference to provide designers the option of generating a bandgap voltage (1.2V) using a small area at the expense of performance. 
 It is intended to fit inside an existing VDD Pad without taking up extra area in the core. It can serve as reference for various application including LDOs, low-resolution converters, etc.
-It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasing or even as a temperature sensor with calibration. 
+It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasing or even as a temperature sensor with calibration. Final layout is about 75um X 25um.
+
+For reproducibility, relevant PDK files (models, tech files, etc) are included. EDA tool versions used: ngspice-47, xschem-V3.4.8RC, magic-8.3.684, netgen 1.5.323, KLayout-0.30.12
 
 # Folder Structure
 
@@ -14,6 +16,7 @@ It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasi
 ├── scripts/     GDS stream-out and netlist extraction scripts
 ├── verify/      LVS and post-layout simulation decks
 ├── gds/         Intermediate GDS and GDS artwork
+├── pdks/        necessary PDK files (models, tech files, etc) 
 └── final/gds    Final GDS for Chipalooza submission
 ```
 
@@ -29,10 +32,11 @@ It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasi
   - `lvs/`: LVS flow (`netlist.sh`, `extract_net4lvs.sh`, `run_lvs.sh`); see `verify/lvs/README`.
   - `sims/`: testbenches with schematic, LVS-extracted, PEX and RCX netlists of the DUT for pre- vs. post-layout comparison.
 - **gds/**: intermediate GDS (`tinybgr_floorplan.gds`, `slot15_wrapper.gds`) and `gdsart/` (GDS artwork with generation, render and DRC scripts).
+- **pdks/**: ngspice model files, magic and netgen tech files, klayout tech files.
 - **final/gds/**: `slot_15.gds`, pulled automatically into the Chipalooza chip.
 
 
-## Design Flow
+# Design Flow
 
 1. Draw the schematic in `xschem/` and simulate (`netlist/`, `verify/sims/`).
 2. Draw the layout in `magic/` and run DRC (`magic/run_drc_mag.sh`).
@@ -41,16 +45,23 @@ It also has a 10uA Proportional-to-Temp (PTAT) output that can be used for biasi
 5. Stream out GDS (`scripts/create_slot15_gds.sh`) to `final/gds/slot_15.gds`.
 
 # Design
+
 ![Schemtics: Tiny BGR](docs/sg13cmos5l_srout_tinybgr.png)
 
-Schmatic
+TBD: Design methodology and guidelines.
 
 ![Tiny BGRLayout ](docs/sg13cmos5l_srout_tinyBGR_layout.png)
 
-
-
-
+TBD: Layout guidelines.
 
 # Resources
+- [Thomas Benz, et.al ArtisIC GDS art generator](https://github.com/pulp-platform/artistic)
 
-- [Thomas Benz, et.al ArtisIC GDS art generator](https://github.com/pulp-platform/artistic) 
+# ToDo
+
+- Cleanup and document verification method.
+- Write script to create testbench from a YAML/JSON file
+- Change model references to the repo pdk files.
+- Setup CACE simulation
+- Consider setting up nix for reproducibility
+- Write design and layout documentation.
