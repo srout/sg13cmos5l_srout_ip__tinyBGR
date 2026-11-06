@@ -60,6 +60,7 @@ TBD: Layout guidelines.
 # ToDo
 
 - Cleanup and document verification method.
+- Mention the hack for cutting the nwell in the bjt to pass LVS.
 - Write script to create testbench from a YAML/JSON file
 - Change model references to the repo pdk files.
 - Setup CACE simulation
