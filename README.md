@@ -23,7 +23,9 @@ For reproducibility, relevant PDK files (models, tech files, etc) are included. 
 - **docs/**: characterization report (`sg13cmos5l_srout_ip__tinyBGR_char.pdf`), schematic and floorplan images.
 - **xschem/**: top-level BGR (`sg13cmos5l_srout_tinybgr.sch/.sym`), resistor sub-block (`sg13cmos5l_srout_tinybgr_res.sch/.sym`) and testbenches (`TB_tinybgr*.sch`) for DC characterization, AC and transient.
 - **netlist/**: SPICE testbenches (`TB_tinybgr_DCchar`, `_AC`, `_tran`). 
-- **magic/**: top-level layout (`sg13cmos5l_srout_tinybgr.mag`), Chipalooza slot 15 wrapper (`slot15_wrapper.mag`) and generated device cells (`sg13_hv_nmos_*`, `sg13_hv_pmos_*`, `rhigh_*`, `pnpMPA_*`).
+- **magic/**: top-level layout (`sg13cmos5l_srout_tinybgr.mag`), Chipalooza slot 15 wrapper (`slot15_wrapper.mag`) and generated device cells (`sg13_hv_nmos_*`, `sg13_hv_pmos_*`, `rhigh_*`, `pnpMPA_*`). 
+  - `slot_15.gds` is created from `slot15_wrapper.mag` using script `scripts/create_gds.sh`
+  - Place GDS art (if desired) using `gds/gdsart/insert_gdsart.py` and place the  final `slot_15.gds` in `final/gds/`
   - `drc_full.tcl`, `run_drc_mag.sh`: DRC in Magic.
   - `extract-lvs-net.tcl`: layout netlist extraction for LVS.
   - `lvs-debug/`: notes and outputs from debugging hierarchical vs. flat LVS.
